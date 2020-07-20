@@ -8,9 +8,9 @@ let index = {
 		let data = {
 			username:$("#username").val(),
 			password:$("#password").val(),
-			email:$("#email").val(),
+			email:$("#email").val()
 		};
-		$.ajax({.
+		$.ajax({
 			type:"POST",
 			url:"/auth/joinProc", // 권한과 인증이 필요없는 경우 auth
 			data:JSON.stringify(data), // POST 방식이기 때문에 data를 날릴 수 있음
