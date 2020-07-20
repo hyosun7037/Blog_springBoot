@@ -18,6 +18,11 @@ public class UserService {
 	
 	@Transactional
 	public void 회원가입(User user) {
-		userRepository.save(user); // sava 끝나면 다시 컨트롤러로 돌아감
+	userRepository.save(user); // save 끝나면 다시 컨트롤러로 돌아감		
+	}
+	
+	@Transactional(readOnly=true)
+	public User 로그인(User user) { // 결과값은 컨트롤러에게 리턴함
+		return userRepository.login(user); // save 끝나면 다시 컨트롤러로 돌아감		
 	}
 }

@@ -24,10 +24,19 @@
 		
 		<div class="justify-content-end collapse navbar-collapse " id="collapsibleNavbar">
 		
-			<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/auth/loginForm">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="/auth/joinForm">회원가입</a></li>
-			</ul>
+		<ul class="navbar-nav">
+		<c:choose>
+			<c:when test="${empty sessionScope.principal}">
+				<li class="nav-item"><a class="nav-link" href="/auth/loginForm">로그인</a></li>
+				<li class="nav-item"><a class="nav-link" href="/auth/joinForm">회원가입</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="nav-item"><a class="nav-link" href="/post/saveForm">글쓰기</a></li>
+				<li class="nav-item"><a class="nav-link" href="/user/updateForm">회원수정</a></li>
+				<li class="nav-item"><a class="nav-link" href="/logoutForm">로그아웃</a></li>
+			</c:otherwise>
+		</c:choose>
+		</ul>
 			
 		</div>
 	</nav>
