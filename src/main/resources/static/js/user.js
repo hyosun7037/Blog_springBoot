@@ -23,10 +23,8 @@ let index = {
 			contentType:"application/json; charset=utf-8", // 대소문자 구분
 			dataType: "json"// 서버로부터 응답받을 때 데이터 타입
 		}).done((resp)=>{
-//			if(resp.statusCode == 1) {// 통신은 무조건 String, 하지만 int로 만들었으니까 1로 설정
-				alert("회원가입 성공");
-				location.href="/";
-//			}
+			alert("회원가입 성공");
+			location.href="/";
 			console.log(resp); // 자바스크립트 오브젝트가 되서 날라옴
 		}).fail((error)=>{ // 실패시 ajax 통신이 안된 것
 			alert("회원가입 실패");
@@ -46,9 +44,14 @@ let index = {
 			contentType:"application/json; charset=utf-8", // 대소문자 구분
 			dataType: "json"// 서버로부터 응답받을 때 데이터 타입
 		}).done((resp)=>{
-			alert("로그인 성공");
-			location.href="/";
-			console.log(resp); 
+			if(resp.statusCode == 1) {// 통신은 무조건 String, 하지만 int로 만들었으니까 1로 설정
+				alert("로그인 성공");
+				location.href="/";
+				console.log(resp); 
+			}else{
+				alert("아이디와 패스워드를 다시 입력하세요");
+				console.log(resp); 
+			}
 		}).fail((error)=>{ 
 			alert("로그인 실패");
 			console.log(error);	
